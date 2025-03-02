@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Як відкрити в браузері</title>
-    <script>
-        function isTikTokBrowser() {
-            return navigator.userAgent.includes("TTWebView") || navigator.userAgent.includes("tiktok");
+    <title>Інструкція</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
         }
-
-        window.onload = function() {
-            if (!isTikTokBrowser()) {
-                // Якщо користувач вже у зовнішньому браузері — редирект на сайт
-                window.location.href = "https://google.com"; // Введи своє посилання
-            }
-        };
-    </script>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        p {
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <img src="instruction.jpg" alt="Інструкція з відкриття в браузері" style="width: 100%; height: auto;">
+    <img src="1000033809.jpg" alt="Інструкція">
+    <p>Натисніть на три крапки в правому верхньому кутку і виберіть "Відкрити в браузері"
+        та зачекайте пару секунд.</p>
+    <script>
+        function redirectToSite() {
+            window.location.href = "https://offer.affimelody.com/f6bUZz";
+        }
+        // Автоматичне перенаправлення через 5 секунд
+        setTimeout(redirectToSite, 5000);
+    </script>
 </body>
 </html>
