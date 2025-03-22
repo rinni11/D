@@ -1,11 +1,5 @@
-<a href="https://example.com" target="_blank" onclick="openExternal(event)">Відкрити в браузері</a>
-
 <script>
-  function openExternal(event) {
-    event.preventDefault();
-    var newWindow = window.open("https://google.com", "_blank");
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
-      window.location.href = "https://google.com";
-    }
-  }
+  setTimeout(function() {
+    window.location.href = "https://google.com";
+  }, 1000);
 </script>
