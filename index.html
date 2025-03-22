@@ -1,5 +1,93 @@
-<script>
-  setTimeout(function() {
-    location.replace("https://google.com");
-  }, 1000);
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Link</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right bottom, rgb(26, 32, 44), rgb(74, 29, 150), rgb(91, 33, 182));
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        .message {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .highlight-android {
+            color: #4CAF50;
+        }
+        .highlight-ios {
+            color: #FFCC00;
+        }
+        .button-container {
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            background-color: #ffffff;
+            color: #4A1D96;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #EDE7F6;
+            color: #321E75;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="message">Якщо у вас <span class="highlight-android">Андроїд</span> 👇</p>
+        <div class="button-container">
+            <button onclick="openAndroidLink()">ВІДКРИТИ САЙТ</button>
+        </div>
+
+        <p class="message">Якщо у вас <span class="highlight-ios">Айфон</span>, спочатку натисніть на три крапки в правому верхньому куті, виберіть <b>ВІДКРИТИ В БРАУЗЕРІ</b> і потім натисніть👇</p>
+        <div class="button-container">
+            <button onclick="openIosLink()">ВІДКРИТИ САЙТ</button>
+        </div>
+    </div>
+
+    <script>
+        const targetUrl = "https://offers.affimelody.com/f6bUZz"; // Ваше посилання
+
+        const openAndroidLink = () => {
+            let formattedUrl = targetUrl;
+            if (!targetUrl.startsWith("https://") && !targetUrl.startsWith("http://")) {
+                formattedUrl = "https://" + targetUrl;
+            }
+            window.location.href = `intent://${formattedUrl.replace('https://', '')}#Intent;scheme=https;package=com.android.chrome;end`;
+        };
+
+        const openIosLink = () => {
+            window.location.replace(targetUrl);
+        };
+    </script>
+</body>
+</html>
