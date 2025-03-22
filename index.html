@@ -1,13 +1,11 @@
-<button onclick="openInBrowser()">Відкрити в браузері</button>
+<a href="https://example.com" target="_blank" onclick="openExternal(event)">Відкрити в браузері</a>
 
 <script>
-  function openInBrowser() {
-    var url = "https://google.com";
-    var a = document.createElement("a");
-    a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    document.body.appendChild(a);
-    a.click();
+  function openExternal(event) {
+    event.preventDefault();
+    var newWindow = window.open("https://google.com", "_blank");
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+      window.location.href = "https://google.com";
+    }
   }
 </script>
