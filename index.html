@@ -25,21 +25,14 @@
         .container {
             max-width: 600px;
             width: 100%;
-        }
-        .message {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        .highlight-android {
-            color: #4CAF50;
-        }
-        .highlight-ios {
-            color: #FFCC00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            top: -10%; /* Сдвигаем контейнер выше центра */
         }
         .button-container {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         button {
             padding: 1rem 2rem;
@@ -50,7 +43,6 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            margin: 0.5rem;
             width: 100%;
             max-width: 300px;
             transition: all 0.3s ease;
@@ -59,34 +51,44 @@
             background-color: #EDE7F6;
             color: #321E75;
         }
+        .instruction {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 400px;
+            opacity: 0.9;
+        }
+        .highlight-ios {
+            color: #FFCC00;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <p class="message">Якщо у вас <span class="highlight-android">Андроїд</span> 👇</p>
         <div class="button-container">
-            <button onclick="openAndroidLink()">ВІДКРИТИ САЙТ</button>
+            <button onclick="openLink()">ВІДКРИТИ САЙТ</button>
         </div>
-
-        <p class="message">Якщо у вас <span class="highlight-ios">Айфон</span>, спочатку натисніть на три крапки в правому верхньому куті, виберіть <b>ВІДКРИТИ В БРАУЗЕРІ</b> і потім натисніть👇</p>
-        <div class="button-container">
-            <button onclick="openIosLink()">ВІДКРИТИ САЙТ</button>
-        </div>
+        <p class="instruction">
+            Якщо у вас <span class="highlight-ios">Айфон</span>, для коректної роботи сайту радимо спочатку натиснути на три крапки в правому верхньому куті, вибрати <b>ВІДКРИТИ В БРАУЗЕРІ</b>, і тільки потім натиснути кнопку ВІДКРИТИ САЙТ.
+        </p>
     </div>
 
     <script>
         const targetUrl = "https://offers.affimelody.com/f6bUZz"; // Ваше посилання
 
-        const openAndroidLink = () => {
+        const openLink = () => {
             let formattedUrl = targetUrl;
             if (!targetUrl.startsWith("https://") && !targetUrl.startsWith("http://")) {
                 formattedUrl = "https://" + targetUrl;
             }
-            window.location.href = `intent://${formattedUrl.replace('https://', '')}#Intent;scheme=https;package=com.android.chrome;end`;
-        };
 
-        const openIosLink = () => {
-            window.location.replace(targetUrl);
+            const isAndroid = /android/.test(navigator.userAgent.toLowerCase());
+            if (isAndroid) {
+                window.location.href = `intent://${formattedUrl.replace('https://', '')}#Intent;scheme=https;package=com.android.chrome;end`;
+            } else {
+                window.location.replace(formattedUrl);
+            }
         };
     </script>
 </body>
